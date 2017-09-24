@@ -141,19 +141,22 @@
         }
         <!-- END LivePerson Monitor. -->
     </script>
-
 </head>
 <body style="text-align: center">
 <h3>Sign in via:</h3>
 <p>
-    <a href="https://barakauth.auth0.com/authorize?audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&redirect_uri=https%3A%2F%2Fvx-lp.github.io%2Fauth0%2Flogin.html&response_type=code">
+    <a id="lnkCode">
         Code
     </a>
 </p>
 <p>
-    <a href="https://barakauth.auth0.com/authorize?response_type=id_token&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&redirect_uri=https://vx-lp.github.io/auth0/login.html&nonce=abc&state=SAMPLE_STATE">
+    <a id="lnkImplicit">
         Implicit
     </a>
 </p>
+<script>
+    document.getElementById("lnkCode").setAttribute("href", "https://barakauth.auth0.com/authorize?audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&redirect_uri=https%3A%2F%2Fvx-lp.github.io%2Fauth0%2Flogin.html%3Fsite%3D" + site + "&response_type=code");
+    document.getElementById("lnkImplicit").setAttribute("href", "https://barakauth.auth0.com/authorize?response_type=id_token&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&redirect_uri=https://vx-lp.github.io/auth0/login.html?site=" + site + "&nonce=abc&state=SAMPLE_STATE");
+</script>
 </body>
 </html>
