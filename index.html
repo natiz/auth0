@@ -46,7 +46,7 @@
         var urlParams = getURLParams(window.location.search) || {};
         var site = urlParams.site || '';
         var redirect_uri = urlParams.redirect_uri ? encodeURIComponent(urlParams.redirect_uri) : 'https%3A%2F%2Fvx-lp.github.io%2Fauth0%2Flogin.html%3Fsite%3D' + site;
-        var state = urlParams.state || {};
+        var state = urlParams.state || '{}';
         state = encodeURIComponent(state);
     </script>
     <!-- BEGIN LivePerson Monitor. -->
