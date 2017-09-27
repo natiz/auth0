@@ -57,7 +57,7 @@
             if (responseType === 'code') {
                 redirectUrl += '&audience=' + audience;
             }
-            window.location.href = redirectUrl;
+            //window.location.href = redirectUrl;
         }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
@@ -171,7 +171,7 @@
 </p>
 <script>
     document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code&audience=' + audience);
-    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=token');
+    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=id_token');
 </script>
 </body>
 </html>
