@@ -47,7 +47,18 @@
         var site = urlParams.site || '';
         var redirect_uri = urlParams.redirect_uri ? encodeURIComponent(urlParams.redirect_uri) : 'https%3A%2F%2Fvx-lp.github.io%2Fauth0%2Flogin.html%3Fsite%3D' + site;
         var state = urlParams.state || '{}';
+        var responseType = urlParams.response_type || '';
         state = encodeURIComponent(state);
+        var baseUrl = 'https://barakauth.auth0.com/authorize?client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp';
+        baseUrl += '&redirect_uri=' + redirect_uri + '&state=' + state;
+        var audience = 'https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F';
+        if (responseType) {
+            var redirectUrl = baseUrl + '&response_type=' + responseType;
+            if (responseType === 'code') {
+                redirectUrl += '&audience=' + audience;
+            }
+            window.location.href = redirectUrl;
+        }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
     <script language="javascript">
@@ -159,8 +170,8 @@
     </a>
 </p>
 <script>
-    document.getElementById("lnkCode").setAttribute("href", "https://barakauth.auth0.com/authorize?audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&response_type=code&redirect_uri=" + redirect_uri + '&state=' + state);
-    document.getElementById("lnkImplicit").setAttribute("href", "https://barakauth.auth0.com/authorize?response_type=id_token&client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&nonce=abc&redirect_uri=" + redirect_uri + '&state=' + state);
+    document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code&audience=' + audience);
+    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=token');
 </script>
 </body>
 </html>
