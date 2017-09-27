@@ -54,10 +54,12 @@
         var audience = '&audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F';
         var nonce = '&nonce=abc';
         if (responseType) {
-            var redirectUrl = baseUrl + '&response_type=' + responseType;
+            var redirectUrl = baseUrl;
             if (responseType === 'code') {
+                redirectUrl += '&response_type=code';
                 redirectUrl += audience;
             } else {
+                redirectUrl += '&response_type=id_token';
                 redirectUrl += nonce;
             }
             window.location.href = redirectUrl;
@@ -174,7 +176,7 @@
 </p>
 <script>
     document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code&audience=' + audience);
-    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=token' + nonce);
+    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=id_token' + nonce);
 </script>
 </body>
 </html>
