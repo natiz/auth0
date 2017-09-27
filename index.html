@@ -60,7 +60,9 @@
             } else {
                 redirectUrl += nonce;
             }
-            window.location.href = redirectUrl;
+            if (urlParams.autoRedirect) {
+                window.location.href = redirectUrl;
+            }
         }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
