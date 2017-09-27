@@ -51,13 +51,16 @@
         state = encodeURIComponent(state);
         var baseUrl = 'https://barakauth.auth0.com/authorize?client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp';
         baseUrl += '&redirect_uri=' + redirect_uri + '&state=' + state;
-        var audience = 'https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F';
+        var audience = '&audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F';
+        var nonce = '&nonce=abc';
         if (responseType) {
             var redirectUrl = baseUrl + '&response_type=' + responseType;
             if (responseType === 'code') {
-                redirectUrl += '&audience=' + audience;
+                redirectUrl += audience;
+            } else {
+                redirectUrl += nonce;
             }
-            //window.location.href = redirectUrl;
+            window.location.href = redirectUrl;
         }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
@@ -171,7 +174,7 @@
 </p>
 <script>
     document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code&audience=' + audience);
-    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=id_token');
+    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=token' + nonce);
 </script>
 </body>
 </html>
