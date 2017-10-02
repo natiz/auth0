@@ -28,8 +28,10 @@
         console.log("CODE", window.accessToken);
         var lpGetAuthenticationToken = function (callback) {
             console.log("inside lpGetAuthenticationToken!");
-            callback(window.accessToken);
-            // TODO
+            callback({
+                redirect_url: "https://natiz.github.io/oauth0/code.html",
+                ssoKey: window.accessToken,
+            });
         }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
