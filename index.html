@@ -169,6 +169,7 @@
 <script>
 lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: "natiz@liveperson.com"}});
 var lock = new Auth0Lock('AMWPs9H_5y1RuBgarnUc8se8RKvHr78z', 'natiz.auth0.com');
+    lock.on("hash_parsed", console.log);
 lock.on("authenticated", function(authResult) {
   // Use the token in authResult to getUserInfo() and save it to localStorage
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
