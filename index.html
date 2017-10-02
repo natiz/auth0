@@ -9,22 +9,7 @@
     <script>
         var lpGetAuthenticationToken = function (callback) {
             console.log("inside lpGetAuthenticationToken!");
-            var token;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    var obj = JSON.parse(xhttp.responseText);
-                    token = obj.id_token;
-                    console.log("got token! " + token);
-                    console.log("calling callback with token...");
-                    callback(token);
-
-                }
-            };
-            xhttp.open("POST", "https://lpsupport.auth0.com/oauth/ro", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp&username=baraka%40liveperson.com&password=1&connection=Username-Password-Authentication&grant_type=password&scope=openid&device=");
-
+            // TODO
         }
     </script>
 
@@ -44,14 +29,14 @@
         }
 
         var urlParams = getURLParams(window.location.search) || {};
-        var site = urlParams.site || '';
-        var redirect_uri = urlParams.redirect_uri ? encodeURIComponent(urlParams.redirect_uri) : 'https%3A%2F%2Fvx-lp.github.io%2Fauth0%2Flogin.html%3Fsite%3D' + site;
+        var site = urlParams.site || '7698243';
+        var redirect_uri = urlParams.redirect_uri ? encodeURIComponent(urlParams.redirect_uri) : 'https%3A%2F%2Fnatiz.github.io%2Fauth0%2F%3Fsite%3D' + site;
         var state = urlParams.state || '{}';
         var responseType = urlParams.response_type || '';
         state = encodeURIComponent(state);
-        var baseUrl = 'https://barakauth.auth0.com/authorize?client_id=6GOQ2EC4ih5s6Xs1G20DBcrCCeWmKeMp';
+        var baseUrl = 'https://natiz.auth0.com/authorize?client_id=AMWPs9H_5y1RuBgarnUc8se8RKvHr78z';
         baseUrl += '&redirect_uri=' + redirect_uri + '&state=' + state;
-        var audience = '&audience=https%3A%2F%2Fbarakauth.auth0.com%2Fapi%2Fv2%2F';
+        var audience = '&audience=https%3A%2F%2Fnatiz.auth0.com%2Fapi%2Fv2%2F';
         var nonce = '&nonce=abc';
         if (responseType) {
             var redirectUrl = baseUrl;
@@ -75,7 +60,7 @@
                 site: site || '',
                 section: lpTag.section || '',
                 autoStart: lpTag.autoStart === false ? false : true,
-                ovr: lpTag.ovr || {domain: 'tlv_plankton3.dev.lprnd.net', tagjs: 'tlv_plankton4.dev.lprnd.net'},
+                ovr: lpTag.ovr || {domain: 'tags-a.liveperson.net', tagjs: 'tags-a.liveperson.net'},
                 _v: '1.5.1',
                 _tagCount: 1,
                 protocol: location.protocol,
