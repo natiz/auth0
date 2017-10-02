@@ -165,6 +165,7 @@
 </p>
 <script src="https://cdn.auth0.com/js/lock/10.20/lock.min.js"></script>
 <script>
+lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: "natiz@liveperson.com"}});
 var lock = new Auth0Lock('AMWPs9H_5y1RuBgarnUc8se8RKvHr78z', 'natiz.auth0.com');
 lock.on("authenticated", function(authResult) {
   // Use the token in authResult to getUserInfo() and save it to localStorage
@@ -177,8 +178,6 @@ lock.on("authenticated", function(authResult) {
       console.log("GOT PROFILE", profile);
 
     document.getElementById('nick').textContent = profile.nickname;
-      
-    //lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: ""}});
 
     localStorage.setItem('accessToken', authResult.accessToken);
     localStorage.setItem('profile', JSON.stringify(profile));
