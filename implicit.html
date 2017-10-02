@@ -177,6 +177,7 @@ lock.on("hash_parsed", function (res) {
     if (res.idTokenPayload) {
         if (res.idTokenPayload.email) {
             console.log("PUSHING SDE", res.idTokenPayload.email);
+            document.getElementById('nick').textContent = res.idTokenPayload.email;
             lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: res.idTokenPayload.email}});
         }
     }
@@ -202,9 +203,6 @@ lock.on("hash_parsed", function (res) {
     </script>
     
 <script>
-
-    document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code');
-    document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=id_token' + nonce);
 </script>
 </body>
 </html>
