@@ -8,7 +8,9 @@
     <title>Auth0 Sample - Code Flow</title>
 
     <script>
-        window.accessToken = '';
+        var urlParams = getURLParams(window.location.search) || {};
+        window.accessToken = urlParams.code;
+        console.log("CODE", window.accessToken);
         var lpGetAuthenticationToken = function (callback) {
             console.log("inside lpGetAuthenticationToken!");
             callback(window.accessToken);
