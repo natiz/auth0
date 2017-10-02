@@ -8,8 +8,10 @@
     <title>Auth0 Sample</title>
 
     <script>
+        window.accessToken = '';
         var lpGetAuthenticationToken = function (callback) {
             console.log("inside lpGetAuthenticationToken!");
+            callback(window.accessToken);
             // TODO
         }
     </script>
@@ -176,6 +178,7 @@ lock.on("authenticated", function(authResult) {
     }
       
       console.log("GOT PROFILE", profile);
+      window.accessToken = authResult.accessToken;
 
     document.getElementById('nick').textContent = profile.nickname;
 
