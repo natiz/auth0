@@ -158,38 +158,39 @@
 <script src="https://cdn.auth0.com/js/lock/10.20/lock.min.js"></script>
 <script>
 var lock = new Auth0Lock('AMWPs9H_5y1RuBgarnUc8se8RKvHr78z', 'natiz.auth0.com');
-lock.on("hash_parsed", function (res) {
-    console.log("HASH PARSED", res);
-    if (res.idToken) {
-        window.accessToken = res.idToken;
-        document.getElementById('accessToken').textContent = res.idToken;
-        console.log("GOT ACCESS TOKEN", res.idToken);
-    }
-    if (res.idTokenPayload) {
-        if (res.idTokenPayload.email) {
-            console.log("PUSHING SDE", res.idTokenPayload.email);
-            document.getElementById('nick').textContent = res.idTokenPayload.email;
-            lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: res.idTokenPayload.email}});
-        }
-    }
-});
-// lock.on("authenticated", function(authResult) {
-//   // Use the token in authResult to getUserInfo() and save it to localStorage
-//   lock.getUserInfo(authResult.accessToken, function(error, profile) {
-//     if (error) {
-//       // Handle error
-//       return;
+// lock.on("hash_parsed", function (res) {
+//     console.log("HASH PARSED", res);
+//     if (res.idToken) {
+//         window.accessToken = res.idToken;
+//         document.getElementById('accessToken').textContent = res.idToken;
+//         console.log("GOT ACCESS TOKEN", res.idToken);
 //     }
-      
-//       console.log("GOT PROFILE", profile);
-//       window.accessToken = authResult.accessToken;
-
-//     document.getElementById('nick').textContent = profile.nickname;
-
-//     localStorage.setItem('accessToken', authResult.accessToken);
-//     localStorage.setItem('profile', JSON.stringify(profile));
-//   });
+//     if (res.idTokenPayload) {
+//         if (res.idTokenPayload.email) {
+//             console.log("PUSHING SDE", res.idTokenPayload.email);
+//             document.getElementById('nick').textContent = res.idTokenPayload.email;
+//             lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: res.idTokenPayload.email}});
+//         }
+//     }
 // });
+lock.on("authenticated", function(authResult) {
+  // Use the token in authResult to getUserInfo() and save it to localStorage
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    if (error) {
+      // Handle error
+      return;
+    }
+      
+      console.log("GOT PROFILE", profile);
+      window.accessToken = authResult.accessToken;
+      
+
+    document.getElementById('nick').textContent = profile.nickname;
+
+    localStorage.setItem('accessToken', authResult.accessToken);
+    localStorage.setItem('profile', JSON.stringify(profile));
+  });
+});
 
     </script>
     
