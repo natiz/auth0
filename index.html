@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Auth0 Sample</title>
+
     <script>
         var lpGetAuthenticationToken = function (callback) {
             console.log("inside lpGetAuthenticationToken!");
@@ -162,8 +163,10 @@
         Implicit
     </a>
 </p>
+<script src="https://cdn.auth0.com/js/lock/10.x.y/lock.min.js"></script>
 <script>
-    lock.on("authenticated", function(authResult) {
+var lock = new Auth0Lock('AMWPs9H_5y1RuBgarnUc8se8RKvHr78z', 'natiz.auth0.com');
+lock.on("authenticated", function(authResult) {
   // Use the token in authResult to getUserInfo() and save it to localStorage
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
     if (error) {
