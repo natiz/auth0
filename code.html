@@ -8,17 +8,7 @@
     <title>Auth0 Sample - Code Flow</title>
 
     <script>
-        var urlParams = getURLParams(window.location.search) || {};
-        window.accessToken = urlParams.code;
-        console.log("CODE", window.accessToken);
-        var lpGetAuthenticationToken = function (callback) {
-            console.log("inside lpGetAuthenticationToken!");
-            callback(window.accessToken);
-            // TODO
-        }
-    </script>
-
-    <script>
+        
         function getURLParams(search) {
             var queryParams = {}, queryArray, singleQuery;
             queryArray = search.substr(1).split("&");
@@ -32,29 +22,13 @@
             }
             return queryParams;
         }
-
         var urlParams = getURLParams(window.location.search) || {};
-        var site = urlParams.site || '7698243';
-        var redirect_uri = urlParams.redirect_uri ? encodeURIComponent(urlParams.redirect_uri) : 'https%3A%2F%2Fnatiz.github.io%2Fauth0%2F%3Fsite%3D' + site;
-        var state = urlParams.state || '{}';
-        var responseType = urlParams.response_type || '';
-        state = encodeURIComponent(state);
-        var baseUrl = 'https://natiz.auth0.com/authorize?client_id=AMWPs9H_5y1RuBgarnUc8se8RKvHr78z';
-        baseUrl += '&redirect_uri=' + redirect_uri + '&state=' + state;
-        var audience = '&audience=https%3A%2F%2Fnatiz.auth0.com%2Fapi%2Fv2%2F';
-        var nonce = '&nonce=abc';
-        if (responseType) {
-            var redirectUrl = baseUrl;
-            if (responseType === 'code') {
-                redirectUrl += '&response_type=code';
-                redirectUrl += audience;
-            } else {
-                redirectUrl += '&response_type=id_token';
-                redirectUrl += nonce;
-            }
-            if (urlParams.autoRedirect) {
-                window.location.href = redirectUrl;
-            }
+        window.accessToken = urlParams.code;
+        console.log("CODE", window.accessToken);
+        var lpGetAuthenticationToken = function (callback) {
+            console.log("inside lpGetAuthenticationToken!");
+            callback(window.accessToken);
+            // TODO
         }
     </script>
     <!-- BEGIN LivePerson Monitor. -->
