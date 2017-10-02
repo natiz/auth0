@@ -150,6 +150,7 @@
     </script>
 </head>
 <body style="text-align: center">
+    <h1>Howdy, <span id="nick"></h1>
 <h3>Sign in via:</h3>
 <p>
     <a id="lnkCode">
@@ -162,6 +163,29 @@
     </a>
 </p>
 <script>
+    lock.on("authenticated", function(authResult) {
+  // Use the token in authResult to getUserInfo() and save it to localStorage
+  lock.getUserInfo(authResult.accessToken, function(error, profile) {
+    if (error) {
+      // Handle error
+      return;
+    }
+      
+      console.log("GOT PROFILE", profile);
+
+    document.getElementById('nick').textContent = profile.nickname;
+      
+    //lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: ""}});
+
+    localStorage.setItem('accessToken', authResult.accessToken);
+    localStorage.setItem('profile', JSON.stringify(profile));
+  });
+});
+
+    </script>
+    
+<script>
+
     document.getElementById("lnkCode").setAttribute("href", baseUrl + '&response_type=code');
     document.getElementById("lnkImplicit").setAttribute("href", baseUrl + '&response_type=id_token' + nonce);
 </script>
