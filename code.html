@@ -23,6 +23,7 @@
             return queryParams;
         }
         var urlParams = getURLParams(window.location.search) || {};
+        window.site = urlParams.site || '7698243';
         window.accessToken = urlParams.code;
         console.log("CODE", window.accessToken);
         var lpGetAuthenticationToken = function (callback) {
