@@ -33,6 +33,10 @@
                 ssoKey: window.accessToken,
             });
         }
+        
+        window.lpTag = window.lpTag || {};
+        window.lpTag.sdes = window.lpTag.sdes || [];
+        lpTag.sdes.push({"type": "ctmrinfo", "info": {customerId: "natiz@liveperson.com"}});
     </script>
     <!-- BEGIN LivePerson Monitor. -->
     <script language="javascript">
